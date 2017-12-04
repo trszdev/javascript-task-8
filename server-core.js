@@ -6,15 +6,16 @@ const messages = {};
 app.use(require('body-parser').json());
 
 app.get('/messages', (req, res) => {
-    let {from, to} = req.query;
-    let result = Object.values(messages).filter(x => (!from || x.from === from) && (!to || x.to === to));
+    let { from, to } = req.query;
+    let result = Object
+        .values(messages)
+        .filter(x => (!from || x.from === from) && (!to || x.to === to));
     res.json(result);
 });
 
 app.post('/messages', (req, res) => {
-    let {from, to} = req.query;
-    let {text} = req.body;
-    let message = Object.assign({id: uuidv4(), text}, {from, to});
+    let { from, to } = req.query;
+    let message = Object.assign({ id: uuidv4(), text: req.body.text }, { from, to });
     messages[message.id] = message;
     res.json(message);
 });
