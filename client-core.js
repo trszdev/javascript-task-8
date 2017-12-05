@@ -25,7 +25,7 @@ function printMessage(message, isVerbose) {
 
 function execute() {
     // Внутри этой функции нужно получить и обработать аргументы командной строки
-    let args = minimist(process.argv.slice(2));
+    let args = minimist(process.argv.slice(2), { string: ['from', 'to', 'text', 'id'] });
     let { _: [command], from, to, text, id, v } = args;
 
     function requestPromise({ url = '/', qs = {}, method = 'GET', json = true }) {

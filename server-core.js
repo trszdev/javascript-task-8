@@ -33,8 +33,7 @@ app.patch('/messages/:id', (req, res) => {
 });
 
 app.use((req, res) => {
-    res.status(404);
-    res.send('404: File Not Found');
+    res.sendStatus(404);
 });
 
 module.exports = app;
