@@ -27,8 +27,10 @@ app.delete('/messages/:id', (req, res) => {
 
 app.patch('/messages/:id', (req, res) => {
     let message = messages[req.params.id];
-    message.text = req.body.text;
-    message.edited = true;
+    if (message) {
+        message.text = req.body.text;
+        message.edited = true;
+    }
     res.json(message);
 });
 
