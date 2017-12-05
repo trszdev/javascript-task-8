@@ -26,11 +26,12 @@ app.delete('/messages/:id', (req, res) => {
 });
 
 app.patch('/messages/:id', (req, res) => {
-    let message = messages[req.params.id];
-    if (message) {
-        message.text = req.body.text;
-        message.edited = true;
+    if (!messages[req.params.id]) {
+        messages[req.params.id] = {};
     }
+    let message = messages[req.params.id];
+    message.text = req.body.text;
+    message.edited = true;
     res.json(message);
 });
 
