@@ -24,7 +24,6 @@ function printMessage(message, isVerbose) {
 
 
 function execute() {
-    // Внутри этой функции нужно получить и обработать аргументы командной строки
     let args = minimist(process.argv.slice(2), {
         string: ['from', 'to', 'text', 'id'],
         boolean: ['v']
